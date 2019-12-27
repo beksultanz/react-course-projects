@@ -27,24 +27,33 @@ var app = {
 		"p",
 		null,
 		app.options.length > 0 ? "Here are your options" : "No options"
+	),
+	React.createElement(
+		"ol",
+		null,
+		React.createElement(
+			"li",
+			null,
+			"Item One"
+		),
+		React.createElement(
+			"li",
+			null,
+			"Item Two"
+		)
 	)
 );
 
-var user = {
-	name: "Ali",
-	age: 19,
-	location: "Archagul"
+var count = 0;
+var addOne = function addOne() {
+	console.log("addOne");
 };
-function getLocation(location) {
-	if (location) {
-		return React.createElement(
-			"p",
-			null,
-			"Location: ",
-			location
-		);
-	}
-}
+var minusOne = function minusOne() {
+	console.log("minusOne");
+};
+var reset = function reset() {
+	console.log("reset");
+};
 
 var templateTwo = React.createElement(
 	"div",
@@ -52,18 +61,28 @@ var templateTwo = React.createElement(
 	React.createElement(
 		"h1",
 		null,
-		user.name ? user.name : "Anonymous"
+		"Count: ",
+		count,
+		" "
 	),
-	user.age && user.age >= 18 && React.createElement(
-		"p",
-		null,
-		"Age: ",
-		user.age
+	React.createElement(
+		"button",
+		{ onClick: addOne },
+		"+1"
 	),
-	getLocation(user.location)
+	React.createElement(
+		"button",
+		{ onClick: minusOne },
+		"-1"
+	),
+	React.createElement(
+		"button",
+		{ onClick: reset },
+		"reset"
+	)
 );
+console.log(templateTwo);
 
 var appRoot = document.getElementById("app");
-
-//render template
-ReactDOM.render(template, appRoot);
+//render template 
+ReactDOM.render(templateTwo, appRoot);
